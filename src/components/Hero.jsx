@@ -73,6 +73,7 @@ export default function App() {
       );
 
       console.log( "😂", res);
+      alert("waitlist joined")
       
 
      } catch (error) {
