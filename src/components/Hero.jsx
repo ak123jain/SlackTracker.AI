@@ -1,5 +1,6 @@
  import React, { useState } from "react";
 import { motion } from "framer-motion";
+import axios from "axios";
 
 // Minimal in-file UI primitives
 const Button = ({ className = "", children, ...props }) => (
@@ -61,10 +62,25 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
 
-  const onSubmit = (e) => {
+   const onSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/user/registeruser`, // API endpoint
+        { email } // request body
+      );
+
+      console.log( "😂", res);
+      
+
+     } catch (error) {
+       console.log(error);
+       
+    }
   };
+
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black text-zinc-200">
